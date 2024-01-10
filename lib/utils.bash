@@ -4,8 +4,8 @@ set -euo pipefail
 
 # TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for uds-cli.
 GH_REPO="https://github.com/defenseunicorns/uds-cli"
-TOOL_NAME="uds-cli"
-TOOL_TEST="uds-cli --help"
+TOOL_NAME="uds"
+TOOL_TEST="uds --help"
 
 fail() {
 	echo -e "asdf-$TOOL_NAME: $*"
