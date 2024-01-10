@@ -2,10 +2,9 @@
 
 set -euo pipefail
 
-# TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for uds-cli.
 GH_REPO="https://github.com/defenseunicorns/uds-cli"
-TOOL_NAME="uds-cli"
-TOOL_TEST="uds-cli --help"
+TOOL_NAME="uds"
+TOOL_TEST="uds --help"
 
 fail() {
 	echo -e "asdf-$TOOL_NAME: $*"
@@ -31,7 +30,6 @@ list_github_tags() {
 }
 
 list_all_versions() {
-	# TODO: Adapt this. By default we simply list the tag names from GitHub releases.
 	# Change this function if uds-cli has other means of determining installable versions.
 	list_github_tags
 }
@@ -41,8 +39,24 @@ download_release() {
 	version="$1"
 	filename="$2"
 
-	# TODO: Adapt the release URL convention for uds-cli
-	url="$GH_REPO/archive/v${version}.tar.gz"
+	# we must get the os/architecture.
+	ARCH="$(uname -m)"
+	OS="$(uname -s)"
+
+	# Zarf uses the string "amd64" if arch is x86_64
+	if [[ "${ARCH}" == "x86_64" ]]; then
+		ARCH="amd64"
+	elif
+		[[ "${ARCH}" == "aarch64" ]]
+	then
+		ARCH="arm64"
+	fi
+
+	arch="${ARCH}"
+	os="${OS}"
+
+	# https://github.com/defenseunicorns/uds-cli/releases/download/v0.5.2/uds-cli_v0.5.2_Darwin_arm64
+	url="${GH_REPO}/releases/download/v${version}/uds-cli_v${version}_${os}_${arch}"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
@@ -61,7 +75,6 @@ install_version() {
 		mkdir -p "$install_path"
 		cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 
-		# TODO: Assert uds-cli executable exists.
 		local tool_cmd
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
 		test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
