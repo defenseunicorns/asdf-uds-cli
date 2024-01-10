@@ -53,7 +53,10 @@ download_release() {
 		ARCH="arm64"
 	fi
 
-	url="${GH_REPO}/releases/download/v${version}/uds-cli_v${version}_${OS}_${ARCH}"
+	arch="${ARCH}"
+	os="${OS}"
+
+	url="${GH_REPO}/releases/download/v${version}/uds-cli_v${version}_${os}_${arch}"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
