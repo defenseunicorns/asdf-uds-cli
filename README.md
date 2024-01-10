@@ -8,6 +8,8 @@
 
 # Contents
 
+- [asdf-uds-cli](#asdf-uds-cli--)
+- [Contents](#contents)
 - [Dependencies](#dependencies)
 - [Install](#install)
 - [Contributing](#contributing)
@@ -42,8 +44,8 @@ asdf install uds-cli latest
 # Set a version globally (on your ~/.tool-versions file)
 asdf global uds-cli latest
 
-# Now uds-cli commands are available
-uds-cli --help
+# Now uds commands are available
+uds --help
 ```
 
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
