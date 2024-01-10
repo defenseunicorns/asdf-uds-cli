@@ -44,11 +44,23 @@ download_release() {
 	ARCH="$(uname -m)"
 	OS="$(uname -s)"
 
+	# Zarf uses the string "amd64" if arch is x86_64
+	if [[ "${ARCH}" == "x86_64" ]]; then
+		ARCH="amd64"
+	elif
+		[[ "${ARCH}" == "aarch64" ]]
+	then
+		ARCH="arm64"
+	fi
+
 	url="${GH_REPO}/releases/download/v${version}/uds-cli_v${version}_${OS}_${ARCH}"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
 }
+
+# https://github.com/defenseunicorns/uds-cli/releases/download/v0.5.2/uds-cli_v0.5.2_Linux_arm64
+# https://github.com/defenseunicorns/uds-cli/releases/download/v0.5.2/uds-cli_v0.5.2_Linux_x86_64
 
 install_version() {
 	local install_type="$1"
