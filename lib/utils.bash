@@ -31,7 +31,6 @@ list_github_tags() {
 }
 
 list_all_versions() {
-	# TODO: Adapt this. By default we simply list the tag names from GitHub releases.
 	# Change this function if uds-cli has other means of determining installable versions.
 	list_github_tags
 }
@@ -41,8 +40,11 @@ download_release() {
 	version="$1"
 	filename="$2"
 
-	# TODO: Adapt the release URL convention for uds-cli
-	url="$GH_REPO/archive/v${version}.tar.gz"
+	# we must get the os/architecture.
+	ARCH="$(uname -m)"
+	OS="$(uname -s)"
+
+	url="${GH_REPO}/releases/download/v${version}/uds-cli_v${version}_${OS}_${ARCH}"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
