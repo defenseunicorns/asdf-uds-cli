@@ -4,6 +4,8 @@
 
 [uds-cli](https://github.com/defenseunicorns/uds-cli) plugin for the [asdf version manager](https://asdf-vm.com).
 
+This proof-of-concept ASDF plugin is not officially supported by the UDS team. Use at your own risk.
+
 </div>
 
 # Contents
@@ -25,8 +27,6 @@
 Plugin:
 
 ```shell
-asdf plugin add uds-cli
-# or
 asdf plugin add uds-cli https://github.com/defenseunicorns/asdf-uds-cli.git
 ```
 
