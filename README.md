@@ -20,7 +20,6 @@ This proof-of-concept ASDF plugin is not officially supported by the UDS team. U
 # Dependencies
 
 - `bash`, `curl`, and [POSIX utilities](https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html).
-- `SOME_ENV_VAR`: set this environment variable in your shell config to load the correct version of tool x.
 
 # Install
 
