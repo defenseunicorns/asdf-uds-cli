@@ -2,20 +2,13 @@
 
 # asdf-uds-cli [![Build](https://github.com/defenseunicorns/asdf-uds-cli/actions/workflows/build.yml/badge.svg)](https://github.com/defenseunicorns/asdf-uds-cli/actions/workflows/build.yml) [![Lint](https://github.com/defenseunicorns/asdf-uds-cli/actions/workflows/lint.yml/badge.svg)](https://github.com/defenseunicorns/asdf-uds-cli/actions/workflows/lint.yml)
 
-[uds-cli](https://github.com/defenseunicorns/uds-cli) plugin for the [asdf version manager](https://asdf-vm.com).
-
-This proof-of-concept ASDF plugin is not officially supported by the UDS team. Use at your own risk.
+Unofficial [uds-cli](https://github.com/defenseunicorns/uds-cli) plugin for the [asdf version manager](https://asdf-vm.com).
 
 </div>
 
-# Contents
+# About
 
-- [asdf-uds-cli](#asdf-uds-cli--)
-- [Contents](#contents)
-- [Dependencies](#dependencies)
-- [Install](#install)
-- [Contributing](#contributing)
-- [License](#license)
+This is an [asdf](https://asdf-vm.com) plugin for [uds-cli](https://github.com/defenseunicorns/uds-cli). It is not officially supported by the UDS team, but has been in use for long enough to be considered robust and stable.
 
 # Dependencies
 
@@ -23,13 +16,17 @@ This proof-of-concept ASDF plugin is not officially supported by the UDS team. U
 
 # Install
 
-Plugin:
+## asdf
+
+`asdf` can be installed by following the instructions [here](https://asdf-vm.com/guide/getting-started.html).
+
+## Plugin
 
 ```shell
 asdf plugin add uds-cli https://github.com/defenseunicorns/asdf-uds-cli.git
 ```
 
-uds-cli:
+## uds-cli
 
 ```shell
 # Show all installable versions
